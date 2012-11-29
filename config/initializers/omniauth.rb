@@ -1,3 +1,3 @@
 Rails.application.config.middleware.use OmniAuth::Builder do
-  provider :github, ENV['OMNIAUTH_PROVIDER_KEY'], ENV['OMNIAUTH_PROVIDER_SECRET']
+  provider :instagram, "6143c7e2ac8b4299ac6168a199a6385b", "b1ce8b9ca8a349398d7d4a3faa6b483c"
 end
