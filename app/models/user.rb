@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   attr_accessible :role_ids, :as => :admin
   attr_accessible :provider, :uid, :name, :email, :token
   has_many :likes
+  after_create :update_likes
 
   def self.create_with_omniauth(auth)
     create! do |user|
