@@ -27,3 +27,5 @@ gem "simple_form", ">= 2.0.4"
 gem "quiet_assets", ">= 1.0.1", :group => :development
 gem "rest-client"
 gem "method_decorators"
+
+gem "heroku", :group => :development

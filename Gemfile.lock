@@ -63,6 +63,7 @@ GEM
       mail (~> 2.2)
     erubis (2.7.0)
     eventmachine (1.0.0)
+    excon (0.16.10)
     execjs (1.4.0)
       multi_json (~> 1.0)
     factory_girl (4.1.0)
@@ -81,6 +82,14 @@ GEM
       haml (~> 3.1)
       railties (>= 3.1, < 4.1)
     hashie (1.2.0)
+    heroku (2.33.3)
+      heroku-api (~> 0.3.7)
+      launchy (>= 0.3.2)
+      netrc (~> 0.7.7)
+      rest-client (~> 1.6.1)
+      rubyzip
+    heroku-api (0.3.7)
+      excon (~> 0.16.10)
     hike (1.2.1)
     hpricot (0.8.6)
     httpauth (0.2.0)
@@ -107,6 +116,7 @@ GEM
       sassy-math (>= 1.2)
     multi_json (1.3.7)
     multipart-post (1.1.5)
+    netrc (0.7.7)
     nokogiri (1.5.5)
     oauth2 (0.8.0)
       faraday (~> 0.8)
@@ -225,6 +235,7 @@ DEPENDENCIES
   factory_girl_rails (>= 4.1.0)
   haml (>= 3.1.7)
   haml-rails (>= 0.3.5)
+  heroku
   hpricot (>= 0.8.6)
   jquery-rails
   method_decorators
