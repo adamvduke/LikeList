@@ -29,3 +29,4 @@ gem "rest-client"
 gem "method_decorators"
 
 gem "heroku", :group => :development
+gem "activerecord-postgresql-adapter"
