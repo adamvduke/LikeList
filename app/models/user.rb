@@ -18,8 +18,9 @@ class User < ActiveRecord::Base
 
   def update_likes
     liked_posts.each do |post|
-      like = Like.build_with_post(post)
-      like.user = self
+      like = Like.where(user_id:self.id).where(ig_id:post["id"]).first
+      like = Like.build_with_post(post) unless like
+      like.user = self unless like.user
       like.save
     end
   end
