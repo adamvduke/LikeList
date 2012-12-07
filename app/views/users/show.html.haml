@@ -1,5 +1,11 @@
-%h3 User
-%p
+%h3.six.columns.centered User Show
+%p.six.columns.centered
   User: #{@user.name}
 %p
-  Email: #{@user.email if @user.email}
+%div.six.columns.centered
+  - @user.likes.order("created_time DESC").each do |like|
+    %p
+      %img{:src => like.standard_res_image, :class => "ig_like"}
+      %div{:class => "ig_like"}
+        = like.username
+        %a{:href => like.web_url } View on instagram
