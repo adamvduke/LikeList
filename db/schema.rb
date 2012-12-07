@@ -11,10 +11,10 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121207042823) do
+ActiveRecord::Schema.define(:version => 20121207204518) do
 
   create_table "likes", :force => true do |t|
-    t.string   "caption"
+    t.text     "caption"
     t.string   "ig_id"
     t.string   "low_res_image"
     t.string   "standard_res_image"
