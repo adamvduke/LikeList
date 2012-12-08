@@ -11,44 +11,45 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121207204518) do
+ActiveRecord::Schema.define(:version => 20121208060007) do
 
   create_table "likes", :force => true do |t|
-    t.text     "caption"
-    t.string   "ig_id"
-    t.string   "low_res_image"
-    t.string   "standard_res_image"
-    t.string   "thubmbnail"
-    t.string   "web_url"
-    t.string   "created_time"
-    t.string   "filter"
-    t.string   "username"
-    t.integer  "user_id"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
+    t.text      "caption"
+    t.string    "ig_id"
+    t.string    "low_res_image"
+    t.string    "standard_res_image"
+    t.string    "thubmbnail"
+    t.string    "web_url"
+    t.string    "created_time"
+    t.string    "filter"
+    t.string    "username"
+    t.integer   "user_id"
+    t.timestamp "created_at",         :null => false
+    t.timestamp "updated_at",         :null => false
   end
 
   add_index "likes", ["user_id"], :name => "index_likes_on_user_id"
 
   create_table "roles", :force => true do |t|
-    t.string   "name"
-    t.integer  "resource_id"
-    t.string   "resource_type"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.string    "name"
+    t.integer   "resource_id"
+    t.string    "resource_type"
+    t.timestamp "created_at",    :null => false
+    t.timestamp "updated_at",    :null => false
   end
 
   add_index "roles", ["name", "resource_type", "resource_id"], :name => "index_roles_on_name_and_resource_type_and_resource_id"
   add_index "roles", ["name"], :name => "index_roles_on_name"
 
   create_table "users", :force => true do |t|
-    t.string   "name"
-    t.string   "email"
-    t.string   "provider"
-    t.string   "uid"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.string   "token"
+    t.string    "name"
+    t.string    "email"
+    t.string    "provider"
+    t.string    "uid"
+    t.timestamp "created_at", :null => false
+    t.timestamp "updated_at", :null => false
+    t.string    "token"
+    t.string    "nickname"
   end
 
   create_table "users_roles", :id => false, :force => true do |t|

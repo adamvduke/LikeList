@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   rolify
   attr_accessible :role_ids, :as => :admin
-  attr_accessible :provider, :uid, :name, :email, :token
+  attr_accessible :provider, :uid, :name, :email, :token, :nickname
   has_many :likes
   after_create :update_likes
 
