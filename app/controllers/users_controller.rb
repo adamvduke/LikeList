@@ -23,4 +23,8 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def show_nickname
+    @user = User.where(nickname:params[:nickname]).first
+    render :show
+  end
 end
