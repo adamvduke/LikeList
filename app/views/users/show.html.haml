@@ -4,8 +4,4 @@
 %p
 %div.six.columns.centered
   - @user.likes.order("created_time DESC").each do |like|
-    %p
-      %img{:src => like.standard_res_image, :class => "ig_like"}
-      %div{:class => "ig_like"}
-        = like.username
-        %a{:href => like.web_url } View on instagram
+    = render partial:"ig_like", locals:{like:like}
