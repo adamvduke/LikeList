@@ -30,8 +30,12 @@ class User < ActiveRecord::Base
     end
   end
 
+  def initial_liked_media_url
+    "https://api.instagram.com/v1/users/self/media/liked/?access_token=#{token}"
+  end
+
   def liked_posts
-    media_url = "https://api.instagram.com/v1/users/self/media/liked/?access_token=#{token}"
+    media_url = initial_liked_media_url
     posts = []
     while media_url != nil
       json = json_for(media_url)
