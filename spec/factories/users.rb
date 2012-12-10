@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   sequence :uid do |n|
-    "#{n}#{n+n}#{n+n+n}#{n}#{n}#{n+n}"
+    ((Random.rand(100000) * Random.rand(100000)) / n ).to_s
   end
 
   factory :user do
