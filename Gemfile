@@ -36,6 +36,7 @@ group :test do
   gem 'database_cleaner', '>= 0.9.1'
   gem 'email_spec', '>= 1.4.0'
   gem 'mocha'
+  gem 'webmock'
 end
 
 group :development, :test do

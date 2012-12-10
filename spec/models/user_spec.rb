@@ -71,4 +71,32 @@ describe User do
       end
     end
   end
+
+  describe 'Updating likes' do
+
+    describe '#json_for' do
+      it "should return a hash" do
+        user = FactoryGirl.create(:user)
+        result = user.json_for("https://api.instagram.com/v1/users/self/media/liked/?access_token=#{user.token}")
+        result.class.should be(Hash)
+      end
+    end
+
+    describe '#liked_posts' do
+      it "should find 20 posts" do
+        user = FactoryGirl.create(:user)
+        user.liked_posts.count.should eq(20)
+      end
+    end
+
+    describe '#update_likes' do
+      it "should increment the number of likes by 20" do
+        user = FactoryGirl.create(:user)
+        user.update_likes
+        user.reload
+        user.likes.count.should eq(20)
+      end
+    end
+
+  end
 end
