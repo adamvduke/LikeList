@@ -11,6 +11,12 @@ describe User do
         @user = User.create_with_omniauth(@auth)
       end
 
+      it "should increment the number of users" do
+        lambda {
+          User.create_with_omniauth(@auth)
+        }.should change(User, :count).by(1)
+      end
+
       it "should return an instance of User" do
         @user.class.should eq(User)
       end
