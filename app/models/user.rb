@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
       user.token = auth['credentials']['token']
       if auth['info']
         user.name = auth['info']['name'] || ""
+        user.nickname = auth['info']['nickname']
         user.email = auth['info']['email'] || ""
       end
     end
