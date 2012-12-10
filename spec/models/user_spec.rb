@@ -89,12 +89,19 @@ describe User do
       end
     end
 
-    describe '#update_likes' do
+    context '#update_likes' do
       it "should increment the number of likes by 20" do
         user = FactoryGirl.build(:user)
         lambda {
           user.update_likes
         }.should change(Like, :count).by(20)
+      end
+
+      it "should not add duplicate likes" do
+        user = FactoryGirl.create(:user)
+        lambda {
+          user.update_likes
+        }.should change(Like, :count).by(0)
       end
     end
 
