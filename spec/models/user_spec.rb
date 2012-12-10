@@ -91,10 +91,10 @@ describe User do
 
     describe '#update_likes' do
       it "should increment the number of likes by 20" do
-        user = FactoryGirl.create(:user)
-        user.update_likes
-        user.reload
-        user.likes.count.should eq(20)
+        user = FactoryGirl.build(:user)
+        lambda {
+          user.update_likes
+        }.should change(Like, :count).by(20)
       end
     end
 
