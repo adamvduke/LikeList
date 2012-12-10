@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121208060007) do
+ActiveRecord::Schema.define(:version => 20121210184023) do
 
   create_table "likes", :force => true do |t|
     t.text      "caption"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(:version => 20121208060007) do
     t.timestamp "updated_at",         :null => false
   end
 
+  add_index "likes", ["user_id", "ig_id"], :name => "index_likes_on_user_id_and_ig_id", :unique => true
   add_index "likes", ["user_id"], :name => "index_likes_on_user_id"
 
   create_table "roles", :force => true do |t|
