@@ -1,4 +1,8 @@
+require 'method_decorators/decorators'
+
 class User < ActiveRecord::Base
+  extend MethodDecorators
+
   rolify
   attr_accessible :role_ids, :as => :admin
   attr_accessible :provider, :uid, :name, :email, :token, :nickname
@@ -38,17 +42,12 @@ class User < ActiveRecord::Base
     posts
   end
 
-  # It would be really nice to use method_decorators 'Retry.new(5) to 
-  # solve the infinite loop problem
+  # See https://github.com/michaelfairley/method_decorators
+  # for more information on this neato syntax
+  +Retry.new(5)
   def json_for(url)
-    begin
-      response = RestClient.get url
-      json = JSON.parse(response)
-    rescue Exception
-      puts "Rescuing #{url}"
-      # yeah, infinite loop, be careful
-      json_for(url)
-    end
+    response = RestClient.get url
+    json = JSON.parse(response)
   end
 
 end
