@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   rolify
   attr_accessible :role_ids, :as => :admin
   attr_accessible :provider, :uid, :name, :email, :token, :nickname
-  has_many :likes
+  has_many :likes, :dependent => :destroy
   after_create :update_likes
 
   def self.create_with_omniauth(auth)

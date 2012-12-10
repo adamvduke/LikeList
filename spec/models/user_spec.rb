@@ -52,7 +52,17 @@ describe User do
 
     context 'with likes' do
 
-      it 'should delete the dependent likes'
+      before do
+        5.times do
+          FactoryGirl.create(:like, user:@user)
+        end
+      end
+
+      it 'should delete the dependent likes' do
+        lambda {
+          @user.destroy
+        }.should change(Like, :count).by(-5)
+      end
     end
   end
 end
