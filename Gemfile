@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'activerecord-postgresql-adapter'
 gem 'cancan', '>= 1.6.8'
+gem 'delayed_job_active_record'
 gem 'haml', '>= 3.1.7'
 gem 'heroku'
 gem 'jquery-rails'

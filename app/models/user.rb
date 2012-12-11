@@ -29,6 +29,7 @@ class User < ActiveRecord::Base
       save
     end
   end
+  handle_asynchronously :update_likes
 
   def initial_liked_media_url
     "https://api.instagram.com/v1/users/self/media/liked/?access_token=#{token}"
