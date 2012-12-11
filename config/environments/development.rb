@@ -34,4 +34,9 @@ LikeIt::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  # Setup the Delayed Job scaler
+  config.after_initialize do
+    Delayed::Job.scaler = :local
+  end
 end
