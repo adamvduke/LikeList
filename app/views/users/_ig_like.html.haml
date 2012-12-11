@@ -1,5 +1,7 @@
-%img{ src:like.standard_res_image }
-%div
-  = like.username
-  %a{ href:like.web_url } View on instagram
-%p
+.six.columns.centered
+  .centered
+    %img.like_image{ src:like.standard_res_image }
+  .like_caption
+    = "Posted by: #{like.username}"
+    %a{ href:like.web_url } View on instagram
+  %p

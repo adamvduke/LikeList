@@ -1,6 +1,6 @@
 %h3.six.columns.centered
   = "#{@user.nickname}'s likes"
 %p
-%div.six.columns.centered
+%div
   - @user.likes.order("created_time DESC").each do |like|
     = render partial:"ig_like", locals:{like:like}
