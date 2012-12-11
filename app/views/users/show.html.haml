@@ -1,6 +1,5 @@
-%h3.six.columns.centered User Show
-%p.six.columns.centered
-  User: #{@user.name}
+%h3.six.columns.centered
+  = "#{@user.nickname}'s likes"
 %p
 %div.six.columns.centered
   - @user.likes.order("created_time DESC").each do |like|
