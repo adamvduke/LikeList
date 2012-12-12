@@ -3,5 +3,6 @@
     %img.like_image{ src:like.standard_res_image }
   .like_caption
     = "Posted by: #{like.username}"
-    %a{ href:like.web_url } View on instagram
+    - if like.web_url
+      %a{ href:like.web_url } View on instagram
   %p
