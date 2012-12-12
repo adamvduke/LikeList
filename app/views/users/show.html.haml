@@ -2,5 +2,4 @@
   = "#{@user.nickname}'s likes"
 %p
 %div
-  - @user.likes.order("created_time DESC").each do |like|
-    = render partial:"ig_like", locals:{like:like}
+  = render 'shared/likes'

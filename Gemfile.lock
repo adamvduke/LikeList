@@ -258,6 +258,7 @@ GEM
       addressable (>= 2.2.7)
       crack (>= 0.1.7)
     websocket (1.0.4)
+    will_paginate (3.0.3)
     workless (1.1.1)
       delayed_job (>= 2.0.7)
       heroku-api
@@ -308,5 +309,6 @@ DEPENDENCIES
   thin (>= 1.5.0)
   uglifier (>= 1.0.3)
   webmock
+  will_paginate (~> 3.0)
   workless (~> 1.1.1)
   zurb-foundation (>= 3.2.0)

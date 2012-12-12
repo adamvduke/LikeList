@@ -14,7 +14,8 @@ gem 'rest-client'
 gem 'rolify', '>= 3.2.0'
 gem 'simple_form', '>= 2.0.4'
 gem 'thin', '>= 1.5.0'
-gem "workless", "~> 1.1.1"
+gem 'workless', '~> 1.1.1'
+gem 'will_paginate', '~> 3.0'
 
 group :assets do
   gem 'coffee-rails', '~> 3.2.1'
