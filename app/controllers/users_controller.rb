@@ -21,12 +21,17 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @likes = @user.likes.paginate(page:params[:page]).order("created_time DESC")
+    @likes = likes_for(@user)
   end
 
   def show_nickname
     @user = User.where(nickname:params[:nickname]).first
-    @likes = @user.likes.paginate(page:params[:page]).order("created_time DESC")
+    @likes = likes_for(@user)
     render :show
   end
+
+  private
+    def likes_for(user)
+      @user.likes.paginate(page:params[:page]).order("created_time DESC")
+    end
 end
