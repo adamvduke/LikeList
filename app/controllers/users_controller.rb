@@ -25,7 +25,7 @@ class UsersController < ApplicationController
   end
 
   def show_nickname
-    @user = User.where(nickname:params[:nickname]).first
+    @user = User.find_by_nickname!(params[:nickname])
     @likes = likes_for(@user)
     render :show
   end
