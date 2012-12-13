@@ -1,6 +1,7 @@
 class Like < ActiveRecord::Base
   belongs_to :user
   attr_accessible :user, :caption, :created_time, :filter, :ig_id, :low_res_image, :standard_res_image, :thubmbnail, :username, :web_url
+  acts_as_taggable
 
   def self.build_with_post(post)
     new do |like|
