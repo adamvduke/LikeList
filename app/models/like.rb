@@ -4,17 +4,8 @@ class Like < ActiveRecord::Base
   acts_as_taggable
 
   def self.build_with_post(post)
-    new do |like|
-      like.created_time = post['created_time']
-      like.filter = post['filter']
-      like.username = post['user']['username']
-      like.ig_id = post['id']
-      like.low_res_image = post['images']['low_resolution']['url']
-      like.standard_res_image = post['images']['standard_resolution']['url']
-      like.thubmbnail = post['images']['thumbnail']['url']
-      like.web_url = post['link']
-      like.caption = post['caption']['text'] if post['caption']
-    end
+    post_mapper = PostMapper.new(post)
+    new(post_mapper.attr_hash)
   end
 
 end
