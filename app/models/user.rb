@@ -10,16 +10,8 @@ class User < ActiveRecord::Base
   after_create :update_likes
 
   def self.create_with_omniauth(auth)
-    create! do |user|
-      user.provider = auth['provider']
-      user.uid = auth['uid']
-      user.token = auth['credentials']['token']
-      if auth['info']
-        user.name = auth['info']['name'] || ""
-        user.nickname = auth['info']['nickname']
-        user.email = auth['info']['email'] || ""
-      end
-    end
+    user_mapper = UserMapper.new(auth)
+    create!(user_mapper.attr_hash)
   end
 
   def update_likes
