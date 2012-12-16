@@ -4,8 +4,8 @@ class Like < ActiveRecord::Base
   acts_as_taggable
 
   def self.build_with_post(post)
-    post_mapper = PostMapper.new(post)
-    new(post_mapper.attr_hash)
+    like_mapper = LikeMapper.new(post)
+    new(like_mapper.attr_hash)
   end
 
 end
