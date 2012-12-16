@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :authenticate_user!
+  before_filter :authenticate!
   before_filter :correct_user?, :only => [:edit, :update]
 
   def index
@@ -31,6 +31,12 @@ class UsersController < ApplicationController
   end
 
   private
+
+    def correct_user?
+      @user = User.find(params[:id])
+      redirect_back_or(root_path) unless current_user?(@user)
+    end
+
     def likes_for(user)
       @user.likes.paginate(page:params[:page]).order("created_time DESC")
     end
