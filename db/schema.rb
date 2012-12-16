@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121213225303) do
+ActiveRecord::Schema.define(:version => 20121216230041) do
 
   create_table "delayed_jobs", :force => true do |t|
     t.integer   "priority",   :default => 0
@@ -30,18 +30,18 @@ ActiveRecord::Schema.define(:version => 20121213225303) do
   add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
 
   create_table "likes", :force => true do |t|
-    t.text      "caption"
-    t.string    "ig_id"
-    t.string    "low_res_image"
-    t.string    "standard_res_image"
-    t.string    "thubmbnail"
-    t.string    "web_url"
-    t.string    "created_time"
-    t.string    "filter"
-    t.string    "username"
-    t.integer   "user_id"
-    t.timestamp "created_at",         :null => false
-    t.timestamp "updated_at",         :null => false
+    t.text     "caption"
+    t.string   "ig_id"
+    t.string   "low_res_image"
+    t.string   "standard_res_image"
+    t.string   "thumbnail"
+    t.string   "web_url"
+    t.string   "created_time"
+    t.string   "filter"
+    t.string   "username"
+    t.integer  "user_id"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
   end
 
   add_index "likes", ["user_id", "ig_id"], :name => "index_likes_on_user_id_and_ig_id", :unique => true

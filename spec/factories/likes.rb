@@ -14,7 +14,7 @@ FactoryGirl.define do
     ig_id
     low_res_image Faker::Internet.url
     standard_res_image Faker::Internet.url
-    thubmbnail Faker::Internet.url
+    thumbnail Faker::Internet.url
     web_url Faker::Internet.url
     created_time
     filter "DemoFilter"
