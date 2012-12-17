@@ -21,7 +21,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by_nickname!(params[:id])
-    @likes = likes_for(@user)
+    @likes = paginate(@user.likes)
   end
 
   private
@@ -29,9 +29,5 @@ class UsersController < ApplicationController
     def correct_user?
       @user = User.find_by_nickname!(params[:id])
       redirect_back_or(root_path) unless current_user?(@user)
-    end
-
-    def likes_for(user)
-      @user.likes.paginate(page:params[:page], per_page:5).order("created_time DESC")
     end
 end
