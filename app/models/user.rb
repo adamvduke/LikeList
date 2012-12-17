@@ -14,6 +14,10 @@ class User < ActiveRecord::Base
     create!(user_mapper.attr_hash)
   end
 
+  def to_param
+    nickname
+  end
+
   def update_likes
     liked_posts.each do |post|
       next if Like.where(user_id:self.id).where(ig_id:post["id"]).first
