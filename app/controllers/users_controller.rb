@@ -38,6 +38,6 @@ class UsersController < ApplicationController
     end
 
     def likes_for(user)
-      @user.likes.paginate(page:params[:page]).order("created_time DESC")
+      @user.likes.paginate(page:params[:page], per_page:5).order("created_time DESC")
     end
 end
