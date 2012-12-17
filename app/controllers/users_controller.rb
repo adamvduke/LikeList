@@ -24,12 +24,6 @@ class UsersController < ApplicationController
     @likes = likes_for(@user)
   end
 
-  def show_nickname
-    @user = User.find_by_nickname!(params[:nickname])
-    @likes = likes_for(@user)
-    render :show
-  end
-
   private
 
     def correct_user?
