@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   include SessionsHelper
 
   def paginate(likes)
-    likes.paginate(page:params[:page], per_page:5).order("created_time DESC")
+    likes.paginate(page:params[:page], per_page:5).order("created_at DESC")
   end
 
   rescue_from CanCan::AccessDenied do |exception|
