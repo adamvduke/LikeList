@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
   def create
     auth = request.env["omniauth.auth"]
     user = User.where(:provider => auth['provider'], :uid => auth['uid'].to_s).first || User.create_with_omniauth(auth)
-    session[:user_id] = user.id
+    sign_in(user)
     user.add_role :admin if User.count == 1 # make the first user an admin
     user.update_likes if Rails.env.production?
     if user.email.blank?
@@ -18,7 +18,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    reset_session
+    sign_out
     redirect_to root_url, :notice => 'Signed out!'
   end
 
