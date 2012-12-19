@@ -24,7 +24,7 @@ RSpec.configure do |config|
   # the seed, which is printed after each run.
   #     --seed 1234
   config.order = "random"
-  
+
   config.before(:suite) do
     DatabaseCleaner.strategy = :truncation
   end
@@ -34,4 +34,11 @@ RSpec.configure do |config|
   config.after(:each) do
     DatabaseCleaner.clean
   end
+
+  # A test sign in method to allow signing in during a test
+  # which will then facilitate testing signing out
+  def test_sign_in(user)
+    controller.sign_in(user)
+  end
+
 end
