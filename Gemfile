@@ -40,7 +40,6 @@ group :test do
   gem 'capybara', '>= 1.1.3'
   gem 'database_cleaner', '>= 0.9.1'
   gem 'email_spec', '>= 1.4.0'
-  gem 'mocha'
   gem 'webmock'
 end
 

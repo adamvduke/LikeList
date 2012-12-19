@@ -15,7 +15,7 @@ RSpec.configure do |config|
   config.include(LikeIt::Helpers)
 
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
-  config.mock_with :mocha
+  config.mock_with :rspec
   config.use_transactional_fixtures = true
   config.infer_base_class_for_anonymous_controllers = false
 

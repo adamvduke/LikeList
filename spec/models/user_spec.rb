@@ -6,7 +6,7 @@ describe User do
     describe 'create_with_omniauth' do
 
       before do
-        User.any_instance.stubs(:update_likes).returns(true)
+        User.any_instance.stub(:update_likes).and_return(true)
         @auth = JSON.parse(fixture('auth.json'))
         @user = User.create_with_omniauth(@auth)
       end
@@ -46,7 +46,7 @@ describe User do
   describe 'Deleting an existing user' do
 
     before do
-      User.any_instance.stubs(:update_likes).returns(true)
+      User.any_instance.stub(:update_likes).and_return(true)
       @user = FactoryGirl.create(:user)
     end
 
