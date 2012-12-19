@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
-  before_filter :authenticate!
-  before_filter :correct_user?, :only => [:edit, :update]
+  before_filter :authenticate!, only:[:index, :edit, :update, :destroy]
+  before_filter :admin_user, only:[:index, :destroy]
+  before_filter :correct_user, only:[:edit, :update]
 
   def index
     @users = User.all
@@ -11,12 +12,13 @@ class UsersController < ApplicationController
   end
 
   def update
-    #TODO: somehow validate the email address it can't be a model validation
-    # because with the way the authentication works the user instances are
-    # created without email addresses initially
     @user = User.find_by_nickname!(params[:id])
     if @user.update_attributes(params[:user])
-      redirect_to @user
+      if @user.email.blank?
+        render :edit
+      else
+        redirect_to @user
+      end
     else
       render :edit
     end
@@ -27,10 +29,19 @@ class UsersController < ApplicationController
     @likes = paginate(@user.likes)
   end
 
-  private
+  def destroy
+    @user = User.find_by_nickname!(params[:id])
+    @user.destroy
+    redirect_to users_path
+  end
 
-    def correct_user?
-      @user = User.find_by_nickname!(params[:id])
-      redirect_back_or(root_path) unless current_user?(@user)
+  private
+    def admin_user
+      redirect_to(root_path) unless current_user.has_role? :admin
+    end
+
+    def correct_user
+      user = User.find_by_nickname!(params[:id])
+      redirect_to(root_path) unless current_user?(user)
     end
 end

@@ -1,6 +1,6 @@
 LikeIt::Application.routes.draw do
   root :to => "home#index"
-  resources :users, :only => [ :index, :show, :edit, :update ] do
+  resources :users, :only => [ :index, :show, :edit, :update, :destroy ] do
     resources :likes, :only => [:index, :show, :update, :destroy]
   end
   match '/auth/:provider/callback' => 'sessions#create'
