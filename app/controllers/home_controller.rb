@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   def index
-    if current_user
+    if signed_in?
       redirect_to current_user
     else
       render :index
