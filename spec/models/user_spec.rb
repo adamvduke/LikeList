@@ -43,17 +43,29 @@ describe User do
     end
   end
 
+  describe 'required attributes' do
+
+    it "should require a provider" do
+      no_name_user = FactoryGirl.build(:user, provider:"")
+      no_name_user.should_not be_valid
+    end
+
+    it "should require a uid" do
+      no_name_user = FactoryGirl.build(:user, uid:"")
+      no_name_user.should_not be_valid
+    end
+
+    it "should require a nickname" do
+      no_name_user = FactoryGirl.build(:user, nickname:"")
+      no_name_user.should_not be_valid
+    end
+  end
+
   describe 'Deleting an existing user' do
 
     before do
       User.any_instance.stub(:update_likes).and_return(true)
       @user = FactoryGirl.create(:user)
-    end
-
-    it 'should delete the user' do
-      lambda {
-        @user.destroy
-      }.should change(User, :count).by(-1)
     end
 
     context 'with likes' do

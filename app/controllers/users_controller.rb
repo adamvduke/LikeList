@@ -11,6 +11,9 @@ class UsersController < ApplicationController
   end
 
   def update
+    #TODO: somehow validate the email address it can't be a model validation
+    # because with the way the authentication works the user instances are
+    # created without email addresses initially
     @user = User.find_by_nickname!(params[:id])
     if @user.update_attributes(params[:user])
       redirect_to @user

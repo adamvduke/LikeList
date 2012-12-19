@@ -9,6 +9,10 @@ class User < ActiveRecord::Base
   has_many :likes, :dependent => :destroy
   after_create :update_likes
 
+  validates( :uid, presence:true )
+  validates( :nickname, presence:true )
+  validates( :provider, presence:true )
+
   def self.create_with_omniauth(auth)
     user_mapper = UserMapper.new(auth)
     create!(user_mapper.attr_hash)
