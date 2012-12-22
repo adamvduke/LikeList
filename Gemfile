@@ -48,4 +48,5 @@ group :development, :test do
   gem 'faker'
   gem 'ruby-debug19'
   gem 'rspec-rails', '>= 2.11.4'
+  gem 'spork'
 end
