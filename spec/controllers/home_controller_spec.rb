@@ -1,12 +1,19 @@
 require 'spec_helper'
 
 describe HomeController do
+  render_views
 
   describe "GET 'index'" do
     context 'without a signed in user' do
       it "returns http success" do
         get :index
         response.should be_success
+      end
+
+      it "should render the home index page" do
+        get :index
+        response.should have_selector("div.seven.columns.centered", content:%Q|"Like it" is an app that keeps track of all of your likes on instagram, because instagram doesn't.|)
+        response.should have_selector("div.seven.columns.centered", content:%Q|Sign in with Instagram and let us start keeping track!|)
       end
     end
 
