@@ -12,6 +12,7 @@ describe UsersController do
     end
 
     context 'when logged in' do
+
       context 'with an admin user' do
 
         before do
@@ -31,6 +32,7 @@ describe UsersController do
           assigns(:users).should eq(User.all)
         end
       end
+
       context 'with a non admin user' do
 
         before do
@@ -49,12 +51,9 @@ describe UsersController do
 
   describe "GET 'show'" do
 
-    before do
+    before(:each) do
       User.any_instance.stub(:update_likes).and_return(true)
       @user = FactoryGirl.create(:user)
-      10.times do
-        @user.likes << FactoryGirl.create(:like)
-      end
     end
 
     it "should be successful" do
@@ -67,8 +66,33 @@ describe UsersController do
       assigns(:user).should eq(@user)
     end
 
-    it "should assign the user's likes"
+    context 'for a user with no likes' do
+      it "should assign an empty collection to the user's likes" do
+        get :show, id:@user
+        assigns(:likes).should be_empty
+      end
+    end
 
+    context 'for a user with likes' do
+
+      before do
+        10.times do
+          @user.likes << FactoryGirl.create(:like)
+        end
+      end
+
+      it "should assign the user's likes" do
+        get :show, id:@user
+        assigns(:likes).should_not be_empty
+      end
+
+      it "should paginate the user's likes" do
+        get :show, id:@user
+        likes = assigns(:likes)
+        likes.all.class.should eq(WillPaginate::Collection)
+        likes.all.count.should eq(5)
+      end
+    end
   end
 
   describe "GET 'edit'" do
