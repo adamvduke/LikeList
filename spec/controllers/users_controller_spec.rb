@@ -93,6 +93,24 @@ describe UsersController do
         likes.all.count.should eq(5)
       end
     end
+
+    context 'for a user with likes that are tagged' do
+      before do
+        @tagged = FactoryGirl.create(:like)
+        @tagged.tag_list = "abc, def"
+        @untagged_1 = FactoryGirl.create(:like)
+        @untagged_2 = FactoryGirl.create(:like)
+        @user.likes << @tagged << @untagged_1 << @untagged_2
+      end
+
+      it "should only assign likes that are tagged with the given tag" do
+        get :show, id:@user, tagged:"abc"
+        likes = assigns(:likes)
+        likes.should include(@tagged)
+        likes.should_not include(@untagged_1)
+        likes.should_not include(@untagged_2)
+      end
+    end
   end
 
   describe "GET 'edit'" do
