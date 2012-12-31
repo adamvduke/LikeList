@@ -1,6 +1,6 @@
 class LikesController < ApplicationController
   before_filter :authenticate!
-  before_filter :correct_user?, :only => [:update, :destroy]
+  before_filter :correct_user?
 
   def update
     @user = User.find_by_nickname!(params[:user_id])
