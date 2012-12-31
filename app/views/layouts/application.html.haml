@@ -8,12 +8,12 @@
         = javascript_include_tag "application"
         = csrf_meta_tags
         = yield(:head)
-  %body{:class => "#{controller_name} #{action_name}"}
-    #container.container
+  %body
+    .container
       %header
         = render 'layouts/navigation'
         = render 'layouts/messages'
-      #main.ten.columns.centered{:role => "main"}
+      .ten.columns.centered
         = yield
       %footer
     / ! end of #container
