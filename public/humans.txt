@@ -3,10 +3,10 @@
 
 
 /* TEAM */
-  <your title>: <your name>
-  Site:
-  Twitter:
-  Location:
+  Developer: Adam Duke
+  Site: adamvduke.com
+  Twitter: https://twitter.com/adamvduke
+  Location: Philadelphia, PA
 
 /* THANKS */
   Daniel Kehoe (@rails_apps) for the RailsApps project
