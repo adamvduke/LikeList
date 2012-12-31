@@ -76,7 +76,7 @@ describe UsersController do
     context 'for a user with likes' do
 
       before do
-        10.times do
+        50.times do
           @user.likes << FactoryGirl.create(:like)
         end
       end
@@ -86,11 +86,18 @@ describe UsersController do
         assigns(:likes).should_not be_empty
       end
 
-      it "should paginate the user's likes" do
+      it "should paginate the user's likes with 5 per page by default" do
         get :show, id:@user
         likes = assigns(:likes)
         likes.all.class.should eq(WillPaginate::Collection)
         likes.all.count.should eq(5)
+      end
+
+      it "should accept a per_page parameter that changes the number of items that are paginated" do
+        get :show, id:@user, per_page:15
+        likes = assigns(:likes)
+        likes.all.class.should eq(WillPaginate::Collection)
+        likes.all.count.should eq(15)
       end
     end
 
