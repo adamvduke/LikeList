@@ -1,6 +1,7 @@
 .six.columns.centered
   .centered
-    %img.like_image{ src:like.standard_res_image }
+    %a{href:like.standard_res_image, target:"_blank"}
+      %img.like_image{ src:like.standard_res_image }
   .like_caption
     = "Posted by: #{like.username}"
   .like_caption
