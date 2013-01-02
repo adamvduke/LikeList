@@ -89,6 +89,8 @@ GEM
       multipart-post (~> 1.1)
     fattr (2.2.1)
     ffi (1.2.0)
+    figaro (0.5.0)
+      rails (~> 3.0)
     fssm (0.2.9)
     haml (3.1.7)
     haml-rails (0.3.5)
@@ -293,6 +295,7 @@ DEPENDENCIES
   email_spec (>= 1.4.0)
   factory_girl_rails (>= 4.1.0)
   faker
+  figaro
   haml (>= 3.1.7)
   haml-rails (>= 0.3.5)
   heroku

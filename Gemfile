@@ -46,6 +46,7 @@ end
 group :development, :test do
   gem 'factory_girl_rails', '>= 4.1.0'
   gem 'faker'
+  gem 'figaro'
   gem 'ruby-debug19'
   gem 'rspec-rails', '>= 2.11.4'
   gem 'spork'

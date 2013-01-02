@@ -1,0 +1,6 @@
+# Copy this file to application.yml and add application configuration 
+# variables here, as shown below.
+
+# These are required for omniauth with instagram
+IG_CONSUMER_KEY: Your_Instagram_Consumer_Key
+IG_CONSUMER_SECRET: Your_Instagram_Consumer_Secret
