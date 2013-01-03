@@ -117,6 +117,14 @@ describe UsersController do
         likes.should_not include(@untagged_1)
         likes.should_not include(@untagged_2)
       end
+
+      it "should assign the tags from the user's likes" do
+        get :show, id:@user
+        tags = assigns(:tags)
+        tags.count.should eq(2)
+        tags.map{|t| t.name}.should include("abc")
+        tags.map{|t| t.name}.should include("def")
+      end
     end
   end
 

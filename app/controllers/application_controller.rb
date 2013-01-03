@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   include SessionsHelper
+  include ActsAsTaggableOn::TagsHelper
 
   def paginate(likes)
     per_page = params[:per_page] ||= 5

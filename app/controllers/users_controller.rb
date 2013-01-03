@@ -31,6 +31,7 @@ class UsersController < ApplicationController
     else
       @likes = paginate(@user.likes)
     end
+    @tags = @user.likes.tag_counts_on(:tags)
   end
 
   def destroy
