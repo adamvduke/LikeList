@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121216230041) do
+ActiveRecord::Schema.define(:version => 20130103051435) do
 
   create_table "delayed_jobs", :force => true do |t|
     t.integer   "priority",   :default => 0
@@ -30,18 +30,18 @@ ActiveRecord::Schema.define(:version => 20121216230041) do
   add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
 
   create_table "likes", :force => true do |t|
-    t.text     "caption"
-    t.string   "ig_id"
-    t.string   "low_res_image"
-    t.string   "standard_res_image"
-    t.string   "thumbnail"
-    t.string   "web_url"
-    t.string   "created_time"
-    t.string   "filter"
-    t.string   "username"
-    t.integer  "user_id"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
+    t.text      "caption"
+    t.string    "ig_id"
+    t.string    "low_res_image"
+    t.string    "standard_res_image"
+    t.string    "thumbnail"
+    t.string    "web_url"
+    t.string    "created_time"
+    t.string    "filter"
+    t.string    "username"
+    t.integer   "user_id"
+    t.timestamp "created_at",         :null => false
+    t.timestamp "updated_at",         :null => false
   end
 
   add_index "likes", ["user_id", "ig_id"], :name => "index_likes_on_user_id_and_ig_id", :unique => true
@@ -59,13 +59,13 @@ ActiveRecord::Schema.define(:version => 20121216230041) do
   add_index "roles", ["name"], :name => "index_roles_on_name"
 
   create_table "taggings", :force => true do |t|
-    t.integer  "tag_id"
-    t.integer  "taggable_id"
-    t.string   "taggable_type"
-    t.integer  "tagger_id"
-    t.string   "tagger_type"
-    t.string   "context",       :limit => 128
-    t.datetime "created_at"
+    t.integer   "tag_id"
+    t.integer   "taggable_id"
+    t.string    "taggable_type"
+    t.integer   "tagger_id"
+    t.string    "tagger_type"
+    t.string    "context",       :limit => 128
+    t.timestamp "created_at"
   end
 
   add_index "taggings", ["tag_id"], :name => "index_taggings_on_tag_id"
@@ -84,6 +84,9 @@ ActiveRecord::Schema.define(:version => 20121216230041) do
     t.timestamp "updated_at", :null => false
     t.string    "token"
     t.string    "nickname"
+    t.string    "image"
+    t.text      "bio"
+    t.string    "website"
   end
 
   create_table "users_roles", :id => false, :force => true do |t|

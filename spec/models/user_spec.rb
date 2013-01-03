@@ -40,6 +40,18 @@ describe User do
       it "should set the correct nickname" do
         @user.nickname.should eq("adamvduke")
       end
+
+      it "should set the correct image" do
+        @user.image.should eq("http://images.instagram.com/profiles/profile_5524055_75sq_1329287807.jpg")
+      end
+
+      it "should set the correct bio" do
+        @user.bio.should eq("Dirtbikes, Code, Hardcore, & Metal")
+      end
+
+      it "should set the correct website" do
+        @user.website.should eq("http://adamvduke.com")
+      end
     end
   end
 
