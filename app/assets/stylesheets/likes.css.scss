@@ -7,8 +7,22 @@ img.like_image {
   padding: 5px;
 }
 
-.like_caption {
+.like_caption, .posted_by_caption {
   font-size: 16px;
   padding-top: 5px;
   padding-bottom: 5px;
+}
+
+.like_caption {
+  text-align:right;
+}
+
+@media only screen and (max-width: 767px) {
+  .like_caption {
+    text-align:left;
+  }
+}
+
+.instagram {
+  padding: 1.8em 0px 0.2em 0px;
 }
