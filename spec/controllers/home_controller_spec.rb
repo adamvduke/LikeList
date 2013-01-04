@@ -12,8 +12,8 @@ describe HomeController do
 
       it "should render the home index page" do
         get :index
-        response.should have_selector("div.seven.columns.centered", content:%Q|"Like it" is an app that keeps track of all of your likes on instagram, because instagram doesn't.|)
-        response.should have_selector("div.seven.columns.centered", content:%Q|Sign in with Instagram and let us start keeping track!|)
+        response.should have_selector("div.login_text", content:%Q|"Like it" is an app that keeps track of all of your likes on instagram, because instagram doesn't.|)
+        response.should have_selector("div", content:%Q|Sign in with Instagram and let us start keeping track!|)
       end
     end
 
