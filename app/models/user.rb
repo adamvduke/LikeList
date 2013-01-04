@@ -4,9 +4,9 @@ class User < ActiveRecord::Base
   extend MethodDecorators
 
   rolify
-  attr_accessible :role_ids, :as => :admin
+  attr_accessible :role_ids, as: :admin
   attr_accessible :provider, :uid, :name, :email, :token, :nickname, :image, :bio, :website
-  has_many :likes, :dependent => :destroy
+  has_many :likes, dependent: :destroy
   after_create :update_likes
 
   validates( :uid, presence:true )
