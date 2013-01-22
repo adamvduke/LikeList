@@ -7,7 +7,6 @@ class LikesController < ApplicationController
     @like = @user.likes.find(params[:id])
     @like.tag_list = params[:like][:tag_list]
     @like.save
-    redirect_to :back
   end
 
   def destroy

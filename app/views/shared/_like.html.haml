@@ -11,6 +11,6 @@
         = link_to "View on instagram", like.web_url
   -if current_user?(like.user)
     .row.collapse
-      = form_for(like, url:user_like_path(like.user, like)) do |f|
+      = form_for(like, url:user_like_path(like.user, like), remote:true) do |f|
         .ten.columns= f.text_field :tag_list, placeholder: "tag it"
         .two.columns= f.submit "Submit", class: "button expand postfix"
