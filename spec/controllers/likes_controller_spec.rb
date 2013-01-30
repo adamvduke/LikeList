@@ -37,7 +37,7 @@ describe LikesController do
       end
 
       it "should update the like's tag_list" do
-        put :update, id:@like, user_id:@user, like:{tag_list:"abc, def"}
+        put :update, id:@like, user_id:@user, like:{tag_list:"abc, def"}, format: :js
         @like.reload
         @like.tag_list.should eq(["abc","def"])
       end
