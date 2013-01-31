@@ -1,3 +1,6 @@
-= render partial:'shared/like', collection:@likes
-= will_paginate @likes
-%div
+- if @likes.any?
+  = render partial:'shared/like', collection:@likes
+  = will_paginate @likes
+  %div
+- else
+  = render partial:'shared/no_likes'
