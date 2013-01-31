@@ -1,0 +1,5 @@
+.six.columns.centered
+  Tags:
+  .tags
+    - tag_cloud(@tags, %w(tag1 tag2 tag3 tag4 tag5 tag6 tag7 tag8 tag9)) do |tag, css_class|
+      = link_to tag.name, {action: :show, id: @user, tagged: tag.name }, class: css_class
