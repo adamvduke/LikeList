@@ -1,6 +1,6 @@
 .row
   %h3.six.columns.centered
     = "#{@user.nickname}'s likes"
-  - unless @tags.empty?
+  - if @tags.any?
     = render 'tag_cloud'
   = render 'shared/likes'
