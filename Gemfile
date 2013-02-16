@@ -50,5 +50,6 @@ group :development, :test do
   gem 'ruby-debug19'
   gem 'rspec-rails', '>= 2.11.4'
   gem 'spork'
+  gem 'valid_attribute'
   gem 'webrat'
 end

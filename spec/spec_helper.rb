@@ -8,6 +8,7 @@ Spork.prefork do
   require 'rspec/rails'
   require 'email_spec'
   require 'rspec/autorun'
+  require 'valid_attribute'
 
   # Requires supporting ruby files with custom matchers and macros, etc,
   # in spec/support/ and its subdirectories.

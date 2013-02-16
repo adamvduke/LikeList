@@ -57,20 +57,15 @@ describe User do
 
   describe 'required attributes' do
 
-    it "should require a provider" do
-      no_name_user = FactoryGirl.build(:user, provider:"")
-      no_name_user.should_not be_valid
-    end
+    it { should have_valid(:provider).when('instagram', 'github', 'facebook', 'twitter') }
+    it { should_not have_valid(:provider).when('') }
 
-    it "should require a uid" do
-      no_name_user = FactoryGirl.build(:user, uid:"")
-      no_name_user.should_not be_valid
-    end
+    it { should have_valid(:uid).when('12345', 'abcdef') }
+    it { should_not have_valid(:uid).when('') }
 
-    it "should require a nickname" do
-      no_name_user = FactoryGirl.build(:user, nickname:"")
-      no_name_user.should_not be_valid
-    end
+    it { should have_valid(:nickname).when('adamvduke', 'indiebrain', 'nerded') }
+    it { should_not have_valid(:nickname).when('') }
+
   end
 
   describe 'Deleting an existing user' do
