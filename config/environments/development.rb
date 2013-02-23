@@ -35,8 +35,12 @@ LikeIt::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
 
-  # Setup the Delayed Job scaler
   config.after_initialize do
+    # Setup the Delayed Job scaler
     Delayed::Job.scaler = :local
+
+    # configure Bullet to display javascript alerts
+    Bullet.enable = true
+    Bullet.alert = true
   end
 end

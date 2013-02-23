@@ -28,6 +28,7 @@ group :assets do
 end
 
 group :development do
+  gem 'bullet'
   gem 'haml-rails', '>= 0.3.5'
   gem 'hpricot', '>= 0.8.6'
   gem 'quiet_assets', '>= 1.0.1'
