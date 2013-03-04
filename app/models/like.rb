@@ -8,4 +8,8 @@ class Like < ActiveRecord::Base
     new(like_mapper.attr_hash)
   end
 
+  def secure_standard_res_image
+    standard_res_image.gsub("http", "https")
+  end
+
 end
