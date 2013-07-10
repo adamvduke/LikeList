@@ -1,0 +1,14 @@
+require "open-uri"
+
+urls = <%= raw(current_user.likes.map(&:standard_res_image)) %>
+
+urls.each_with_index do |url, idx|
+  filename = Dir.pwd + "/#{idx}.jpg"
+  begin
+    File.open(filename, 'w') do |fo|
+      fo.write open(url).read
+    end
+  rescue
+    File.delete(filename)
+  end
+end
