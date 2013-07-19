@@ -139,6 +139,7 @@ GEM
     multi_json (1.6.1)
     multipart-post (1.1.5)
     netrc (0.7.7)
+    newrelic_rpm (3.6.5.130)
     nokogiri (1.5.6)
     oauth2 (0.8.0)
       faraday (~> 0.8)
@@ -307,6 +308,7 @@ DEPENDENCIES
   hpricot (>= 0.8.6)
   jquery-rails
   method_decorators
+  newrelic_rpm
   omniauth (>= 1.1.1)
   omniauth-instagram
   quiet_assets (>= 1.0.1)
