@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+ruby '2.0.0'
+
 gem 'activerecord-postgresql-adapter'
 gem 'acts-as-taggable-on', '~> 2.3.1'
 gem 'cancan', '>= 1.6.8'
@@ -49,8 +51,8 @@ group :development, :test do
   gem 'factory_girl_rails', '>= 4.1.0'
   gem 'faker'
   gem 'figaro'
-  gem 'ruby-debug19'
   gem 'rspec-rails', '>= 2.11.4'
+  gem 'pry-rails'
   gem 'spork'
   gem 'valid_attribute'
   gem 'webrat'
