@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   include ActsAsTaggableOn::TagsHelper
 
   def paginate(likes)
-    per_page = params[:per_page] ||= 5
-    likes.paginate(page:params[:page], per_page:per_page, include: :user).order("created_time DESC")
+    Like.per_page = params[:per_page] ||= 5
+    likes.includes(:user).order("created_time DESC").page(params[:page])
   end
 end

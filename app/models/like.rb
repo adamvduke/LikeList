@@ -1,7 +1,8 @@
 class Like < ActiveRecord::Base
   belongs_to :user
-  attr_accessible :user, :caption, :created_time, :filter, :ig_id, :low_res_image, :standard_res_image, :thumbnail, :username, :web_url
   acts_as_taggable
+
+  attr_accessor :per_page
 
   def self.build_with_post(post)
     like_mapper = LikeMapper.new(post)

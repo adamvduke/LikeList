@@ -3,7 +3,6 @@ require 'method_decorators/decorators'
 class User < ActiveRecord::Base
   extend MethodDecorators
 
-  attr_accessible :provider, :uid, :name, :email, :token, :nickname, :image, :bio, :website, :admin
   has_many :likes, dependent: :destroy
   after_create :update_likes
 

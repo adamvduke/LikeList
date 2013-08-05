@@ -3,10 +3,10 @@ LikeIt::Application.routes.draw do
   resources :users, only: [ :index, :show, :edit, :update, :destroy ] do
     resources :likes, only: [ :update, :destroy ]
   end
-  match '/auth/:provider/callback' => 'sessions#create'
-  match '/signin' => 'sessions#new', as: :signin
-  match '/signout' => 'sessions#destroy', as: :signout
-  match '/auth/failure' => 'sessions#failure'
+  get '/auth/:provider/callback' => 'sessions#create'
+  get '/signin' => 'sessions#new', as: :signin
+  get '/signout' => 'sessions#destroy', as: :signout
+  get '/auth/failure' => 'sessions#failure'
 
   get   '/download_likes_script' => 'download#likes_script'
 end

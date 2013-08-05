@@ -13,7 +13,7 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find_by_nickname!(params[:id])
-    if @user.update_attributes(params[:user])
+    if @user.update_attributes(user_params)
       if @user.email.blank?
         render :edit
       else
@@ -31,7 +31,7 @@ class UsersController < ApplicationController
     else
       @likes = paginate(@user.likes)
     end
-    @tags = @user.likes.tag_counts_on(:tags)
+    @tags = Like.where(user_id: @user.id).tag_counts_on(:tags)
   end
 
   def destroy
@@ -48,5 +48,9 @@ class UsersController < ApplicationController
     def correct_user
       user = User.find_by_nickname!(params[:id])
       redirect_to(root_path) unless current_user?(user)
+    end
+
+    def user_params
+      params.require(:user).permit(:email)
     end
 end

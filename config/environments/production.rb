@@ -1,8 +1,12 @@
 LikeIt::Application.configure do
-  # Settings specified here will take precedence over those in config/application.rb
-
   # Code is not reloaded between requests
   config.cache_classes = true
+
+  # Eager load code on boot. This eager loads most of Rails and
+  # your application in memory, allowing both thread web servers
+  # and those relying on copy on write to perform better.
+  # Rake tasks automatically ignore this option for performance.
+  config.eager_load = true
 
   # Full error reports are disabled and caching is turned on
   config.consider_all_requests_local       = false
@@ -22,12 +26,6 @@ LikeIt::Application.configure do
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   config.force_ssl = true
-
-  # Use a different cache store in production
-  # config.cache_store = :mem_cache_store
-
-  # Enable threaded mode
-  # config.threadsafe!
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation can not be found)
