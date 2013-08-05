@@ -314,4 +314,4 @@ DEPENDENCIES
   webrat
   will_paginate (~> 3.0)
   workless (~> 1.1.1)
-  zurb-foundation (>= 3.2.0)
+  zurb-foundation (~> 3.2.0)
