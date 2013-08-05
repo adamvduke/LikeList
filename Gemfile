@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 ruby '2.0.0'
 
 gem 'activerecord-postgresql-adapter'
-gem 'acts-as-taggable-on', '~> 2.3.1'
+gem 'acts-as-taggable-on', '~> 2.4.1'
 gem 'delayed_job_active_record'
 gem 'haml', '>= 3.1.7'
 gem 'heroku'
