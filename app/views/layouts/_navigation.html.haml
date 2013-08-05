@@ -6,5 +6,5 @@
     - else
       .one.column.offset-by-ten= link_to 'Login', signin_path
     - if signed_in?
-      - if current_user.has_role? :admin
+      - if current_user.admin?
         .one.column.offset-by-ten.end= link_to 'Admin', users_path

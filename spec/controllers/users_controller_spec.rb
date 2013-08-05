@@ -18,7 +18,7 @@ describe UsersController do
         before do
           User.any_instance.stub(:update_likes).and_return(true)
           @user = FactoryGirl.create(:user)
-          @user.add_role :admin
+          @user.update_attribute(:admin, true)
           test_sign_in(@user)
         end
 
@@ -209,7 +209,7 @@ describe UsersController do
 
       before(:each) do
         admin = FactoryGirl.create(:user)
-        admin.add_role :admin
+        admin.update_attribute(:admin, true)
         test_sign_in(admin)
       end
 

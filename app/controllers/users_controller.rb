@@ -42,7 +42,7 @@ class UsersController < ApplicationController
 
   private
     def admin_user
-      redirect_to(root_path) unless current_user.has_role? :admin
+      redirect_to(root_path) unless current_user.admin?
     end
 
     def correct_user
