@@ -1,5 +1,5 @@
 .top-nav
-  = link_to "Like It", root_path, class: 'brand'
+  = link_to "Like List", root_path, class: 'brand'
   .row.nav
     - if signed_in?
       .one.column.offset-by-ten= link_to 'Logout', signout_path

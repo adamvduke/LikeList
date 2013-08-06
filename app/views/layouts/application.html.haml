@@ -1,9 +1,9 @@
 !!!
 %html
   %head
-    %title= content_for?(:title) ? yield(:title) : "Like It"
+    %title= content_for?(:title) ? yield(:title) : "Like List"
     %meta{content: "width=device-width, initial-scale=1.0", name: "viewport"}
-    %meta{content: content_for?(:description) ? yield(:description) : "Like It", name: "description"}
+    %meta{content: content_for?(:description) ? yield(:description) : "Like List", name: "description"}
     = favicon_link_tag "/favicon.png", type: "image/png"
     = stylesheet_link_tag "application", media: "all"
     = javascript_include_tag "application", 'data-turbolinks-track' => true

@@ -3,7 +3,7 @@
     = "#{@user.nickname}'s likes"
   - if current_user.id == @user.id
     %p.six.columns.centered
-      = link_to 'Export your likes from Like It with this script', download_likes_script_path(format: 'rb')
+      = link_to 'Export your likes from Like List with this script', download_likes_script_path(format: 'rb')
     - if @tags.any?
       %br
       = render 'tag_cloud'
