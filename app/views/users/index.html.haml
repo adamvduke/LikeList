@@ -1,15 +1,24 @@
-%h3 Users
-.span8
-  %table.table.table-condensed
+.row
+  %h3 Users
+.row
+  %table.ten.columns.mobile-4
     %thead
       %tr
         %th Username
+        %th Like Count
         %th Registered
-        %th
-        %th
+        %th Last Updated
+        %th Last Sign In
+        %th Actions
     %tbody
       - @users.each do |user|
         %tr
           %td= link_to user.nickname, user
+          %td= user.likes.count
           %td= user.created_at.to_date
+          %td= user.updated_at.to_date
+          %td= user.last_sign_in ? user.last_sign_in.to_date : ''
           %td= link_to("Delete user", user_path(user), data: { confirm: "Are you sure?" }, method: :delete, class: 'btn btn-mini') unless user == current_user
+      %tr
+        %td Total
+        %td= Like.count
