@@ -25,7 +25,7 @@ gem 'will_paginate', '~> 3.0'
 
 gem 'sass-rails',   '~> 4.0.0'
 gem 'uglifier', '>= 1.0.3'
-gem 'zurb-foundation', '3.2.3'
+gem 'zurb-foundation', '3.2.5'
 
 group :development do
   gem 'bullet'
