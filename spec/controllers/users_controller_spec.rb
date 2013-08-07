@@ -27,9 +27,9 @@ describe UsersController do
           response.should be_success
         end
 
-        it "should get a list of users" do
+        it "should get an ordered list of users" do
           get :index
-          assigns(:users).should eq(User.all)
+          assigns(:users).should eq(User.order(:created_at))
         end
       end
 
