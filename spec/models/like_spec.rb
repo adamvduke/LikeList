@@ -14,9 +14,16 @@ describe Like do
       end
     end
 
-    [:secure_standard_res_image, :secure_low_res_image, :secure_thumbnail].each do |method|
-      describe "##{method}" do
-        it_should_behave_like "a method that returns a secure url", method
+    [:standard_res_image, :low_res_image, :thumbnail].each do |method|
+      describe "#secure_#{method}" do
+        it_should_behave_like 'a method that returns a secure url', "secure_#{method}"
+
+        it 'should not raise an error if the original method returns nil' do
+          @like.stub(method){nil}
+          lambda {
+            @like.send("secure_#{method}")
+          }.should_not raise_error
+        end
       end
     end
   end

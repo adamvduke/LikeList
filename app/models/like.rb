@@ -12,7 +12,7 @@ class Like < ActiveRecord::Base
   %w[standard_res_image low_res_image thumbnail].each do |method|
     class_eval <<-RUBY, __FILE__, __LINE__ + 1
       def secure_#{method}
-        #{method}.gsub("http", "https")
+        #{method}.nil? ? nil : #{method}.gsub("http", "https")
       end
     RUBY
   end
