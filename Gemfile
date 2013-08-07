@@ -49,7 +49,7 @@ group :development, :test do
   gem 'figaro'
   gem 'rspec-rails', '>= 2.11.4'
   gem 'pry-rails'
-  gem 'spork'
+  gem 'spork-rails', :github => 'sporkrb/spork-rails'
   gem 'valid_attribute'
   gem 'webrat'
 end
