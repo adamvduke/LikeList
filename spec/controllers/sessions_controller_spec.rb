@@ -49,7 +49,7 @@ describe SessionsController do
 
       context 'with an existing user' do
         before do
-          User.create_with_omniauth(@omniauth_hash)
+          @user = User.create_with_omniauth(@omniauth_hash)
         end
 
         it "should not create a new user" do
@@ -62,6 +62,13 @@ describe SessionsController do
           get :create, provider:"instagram"
           controller.current_user.uid.should eq(@omniauth_hash['uid'])
           controller.should be_signed_in
+        end
+
+        it "should update the user's last sign in" do
+          @user.update_attribute(:last_sign_in, nil)
+          get :create, provider:"instagram"
+          @user.reload
+          @user.last_sign_in.should_not be_nil
         end
       end
     end

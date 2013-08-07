@@ -3,6 +3,7 @@ module SessionsHelper
   def sign_in(user)
     session[:user_id] = user.id
     self.current_user = user
+    self.current_user.update_attribute(:last_sign_in, Time.now)
   end
 
   def sign_out
