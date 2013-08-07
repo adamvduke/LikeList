@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-LikeIt::Application.load_tasks
+LikeList::Application.load_tasks

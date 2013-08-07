@@ -13,7 +13,7 @@ if defined?(Bundler)
   # Bundler.require(:default, :assets, Rails.env)
 end
 
-module LikeIt
+module LikeList
   class Application < Rails::Application
 
     # don't generate RSpec tests for views and helpers

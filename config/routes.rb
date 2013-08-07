@@ -1,4 +1,4 @@
-LikeIt::Application.routes.draw do
+LikeList::Application.routes.draw do
   root to: "home#index"
   resources :users, only: [ :index, :show, :edit, :update, :destroy ] do
     resources :likes, only: [ :update, :destroy ]

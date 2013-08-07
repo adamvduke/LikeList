@@ -1,4 +1,4 @@
-module LikeIt
+module LikeList
   module Helpers
     def fixture(name)
       File.read(Rails.root.join("spec","fixtures", name))

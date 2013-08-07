@@ -14,7 +14,7 @@ Spork.prefork do
   Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
   RSpec.configure do |config|
-    config.include(LikeIt::Helpers)
+    config.include(LikeList::Helpers)
 
     config.fixture_path = "#{::Rails.root}/spec/fixtures"
     config.mock_with :rspec

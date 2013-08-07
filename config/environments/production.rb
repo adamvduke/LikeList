@@ -1,4 +1,4 @@
-LikeIt::Application.configure do
+LikeList::Application.configure do
   # Code is not reloaded between requests
   config.cache_classes = true
 
