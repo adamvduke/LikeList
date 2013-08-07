@@ -2,3 +2,7 @@
   "Like List" is an app that keeps track of all of your likes on Instagram, because instagram doesn't.
   %div
     Sign in with Instagram and let us start keeping track!
+
+.row
+  = render partial:'shared/like', collection:@likes
+  = will_paginate @likes
