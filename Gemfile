@@ -54,3 +54,7 @@ group :development, :test do
   gem 'valid_attribute'
   gem 'webrat'
 end
+
+group :production do
+  gem 'passenger'
+end

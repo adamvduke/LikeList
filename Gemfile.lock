@@ -82,6 +82,7 @@ GEM
       sass (~> 3.1)
     crack (0.4.1)
       safe_yaml (~> 0.9.0)
+    daemon_controller (1.1.5)
     daemons (1.1.9)
     database_cleaner (1.0.1)
     delayed_job (4.0.0)
@@ -182,6 +183,10 @@ GEM
     omniauth-oauth2 (1.1.1)
       oauth2 (~> 0.8.0)
       omniauth (~> 1.0)
+    passenger (4.0.17)
+      daemon_controller (>= 1.1.0)
+      rack
+      rake (>= 0.8.1)
     pg (0.14.1)
     polyglot (0.3.3)
     pry (0.9.12.2)
@@ -338,6 +343,7 @@ DEPENDENCIES
   newrelic_rpm
   omniauth (>= 1.1.1)
   omniauth-instagram
+  passenger
   pry-rails
   quiet_assets (>= 1.0.1)
   rails (= 4.0.0)
