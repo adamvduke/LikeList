@@ -46,15 +46,15 @@ before 'deploy:assets:precompile', 'config:symlink'
 namespace :deploy do
   task :start do
     run "sudo sv start likelist_#{rails_env}"
-    run "sudo sv start sidekiq_#{rails_env}"
+    run "sudo sv start delayed_job_#{rails_env}"
   end
   task :stop do
     run "sudo sv stop likelist_#{rails_env}"
-    run "sudo sv stop sidekiq_#{rails_env}"
+    run "sudo sv stop delayed_job_#{rails_env}"
   end
   task :restart, :roles => :app, :except => { :no_release => true } do
     run "sudo sv restart likelist_#{rails_env}"
-    run "sudo sv restart sidekiq_#{rails_env}"
+    run "sudo sv restart delayed_job_#{rails_env}"
   end
 
   desc 'Show deployed revision'
