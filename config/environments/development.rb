@@ -27,9 +27,6 @@ LikeList::Application.configure do
   config.assets.debug = true
 
   config.after_initialize do
-    # Setup the Delayed Job scaler
-    Delayed::Job.scaler = :local
-
     # configure Bullet to display javascript alerts
     Bullet.enable = true
     Bullet.alert = true

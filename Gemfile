@@ -23,7 +23,6 @@ gem 'thin', '>= 1.5.0'
 gem 'turbolinks'
 gem 'uglifier', '>= 1.0.3'
 gem 'whenever'
-gem 'workless', '~> 1.1.1'
 gem 'will_paginate', '~> 3.0'
 gem 'zurb-foundation', '3.2.5'
 
