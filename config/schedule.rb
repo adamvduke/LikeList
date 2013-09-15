@@ -2,14 +2,10 @@
 
 set :output, 'log/schedule.log'
 
-#every :day, at: '1:30am' do
-  #rake "zeropush:feedback"
-#end
+every 30.minutes do
+  rake 'fetch_from_instagram'
+end
 
-#every :day, at: '12:00am' do
-  #rake "db:backup:dropbox"
-#end
-
-#every :day, at: '12:00am' do
-  #rake 'accounting:create_invoices'
-#end
+every :day, at: '1:30am' do
+  rake 'remove_broken_links'
+end
