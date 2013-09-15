@@ -1,7 +1,7 @@
 .row
   %h3.six.columns.centered
     = "#{@user.nickname}'s likes"
-  - if current_user.id == @user.id
+  - if (current_user && current_user.id == @user.id)
     %p.six.columns.centered
       = link_to 'Export your likes from Like List with this script', download_likes_script_path(format: 'rb')
     - if @tags.any?
