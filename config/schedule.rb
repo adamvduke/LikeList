@@ -7,5 +7,5 @@ every 30.minutes do
 end
 
 every :day, at: '1:30am' do
-  rake 'remove_broken_links'
+  rake 'remove_broken_likes'
 end
