@@ -11,7 +11,7 @@ task remove_broken_likes: :environment do
   Like.find_each do |like|
     begin
       puts "Verifying like #{like.id}"
-      RestClient.get(like.standard_res_image)
+      RestClient.head(like.standard_res_image)
     rescue RestClient::Forbidden
       puts "Like: #{like.id} caused a RestClient::Forbidden exception"
       puts "URL: #{like.standard_res_image}"
