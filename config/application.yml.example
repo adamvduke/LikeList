@@ -4,3 +4,7 @@
 # These are required for omniauth with instagram
 IG_CONSUMER_KEY: Your_Instagram_Consumer_Key
 IG_CONSUMER_SECRET: Your_Instagram_Consumer_Secret
+
+NEW_RELIC_LICENSE_KEY:
+NEW_RELIC_APP_NAME:
+
