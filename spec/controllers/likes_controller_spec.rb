@@ -20,7 +20,8 @@ describe LikesController do
       it "should not update the like's tag_list" do
         put :update, id:@like, user_id:@user, like:{tag_list:"abc, def"}
         @like.reload
-        @like.tag_list.should eq(["123","456"])
+        @like.tag_list.should include("123")
+        @like.tag_list.should include("456")
       end
 
       it "should redirect to the root page" do
@@ -39,7 +40,8 @@ describe LikesController do
       it "should update the like's tag_list" do
         put :update, id:@like, user_id:@user, like:{tag_list:"abc, def"}, format: :js
         @like.reload
-        @like.tag_list.should eq(["abc","def"])
+        @like.tag_list.should include("abc")
+        @like.tag_list.should include("def")
       end
     end
 
@@ -53,7 +55,8 @@ describe LikesController do
       it "should not update the like's tag_list" do
         put :update, id:@like, user_id:@user, like:{tag_list:"abc, def"}
         @like.reload
-        @like.tag_list.should eq(["123","456"])
+        @like.tag_list.should include("123")
+        @like.tag_list.should include("456")
       end
     end
   end
