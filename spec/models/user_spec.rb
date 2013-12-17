@@ -99,6 +99,30 @@ describe User do
         result = user.json_for("https://api.instagram.com/v1/users/self/media/liked/?access_token=#{user.token}")
         result.class.should be(Hash)
       end
+
+      it "should set the user's token to nil on RestClient::BadRequest" do
+        RestClient.stub(:get).and_raise(RestClient::BadRequest)
+        user = FactoryGirl.create(:user, token: 'abc123')
+        user.json_for('http://example.com')
+        #user.reload
+        user.token.should be_nil
+      end
+    end
+
+    describe '#initial_liked_media_url' do
+      context 'for a user with a vaild auth token' do
+        it 'should return the correct url' do
+          user = FactoryGirl.create(:user)
+          user.initial_liked_media_url.should eq("https://api.instagram.com/v1/users/self/media/liked/?access_token=#{user.token}")
+        end
+      end
+
+      context 'for a user with a nil auth token' do
+        it 'should return the correct url' do
+          user = FactoryGirl.create(:user, token: nil)
+          user.initial_liked_media_url.should be_nil
+        end
+      end
     end
 
     describe '#liked_posts' do
@@ -123,6 +147,5 @@ describe User do
         }.should change(Like, :count).by(0)
       end
     end
-
   end
 end

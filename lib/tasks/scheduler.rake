@@ -2,7 +2,7 @@ desc "Schedule update_likes for all users"
 task fetch_from_instagram: :environment do
   User.find_each do |user|
     puts "Queueing update for #{user.nickname}"
-    user.update_likes
+    user.update_likes unless user.token.nil?
   end
 end
 

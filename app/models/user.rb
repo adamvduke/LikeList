@@ -29,7 +29,9 @@ class User < ActiveRecord::Base
   handle_asynchronously :update_likes
 
   def initial_liked_media_url
-    "https://api.instagram.com/v1/users/self/media/liked/?access_token=#{token}"
+    unless token.blank?
+      "https://api.instagram.com/v1/users/self/media/liked/?access_token=#{token}"
+    end
   end
 
   def liked_posts
@@ -47,8 +49,12 @@ class User < ActiveRecord::Base
   # for more information on this neato syntax
   +Retry.new(5)
   def json_for(url)
-    response = RestClient.get url
-    json = JSON.parse(response)
+    begin
+      response = RestClient.get url
+      json = JSON.parse(response)
+    rescue RestClient::BadRequest => ex
+      Rails.logger.error([$!, $@].join("\n"))
+      update_attribute(:token, nil)
+    end
   end
-
 end
