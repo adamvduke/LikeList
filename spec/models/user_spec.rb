@@ -130,6 +130,12 @@ describe User do
         user = FactoryGirl.create(:user)
         user.liked_posts.count.should eq(20)
       end
+
+      it "should not throw an exception if json_for returns nil" do
+        user = FactoryGirl.create(:user)
+        user.stub(:json_for).and_return(nil)
+        user.liked_posts.should eq([])
+      end
     end
 
     context '#update_likes' do

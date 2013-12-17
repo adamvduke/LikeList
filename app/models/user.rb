@@ -39,8 +39,8 @@ class User < ActiveRecord::Base
     posts = []
     while media_url != nil
       json = json_for(media_url)
-      media_url = json['pagination']['next_url']
-      posts.concat(json['data'])
+      media_url = json ? json['pagination']['next_url'] : nil
+      posts.concat(json['data']) if json
     end
     posts
   end
