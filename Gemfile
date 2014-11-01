@@ -4,7 +4,7 @@ ruby '2.0.0'
 
 gem 'activerecord-postgresql-adapter'
 gem 'acts-as-taggable-on', '~> 2.4.1'
-gem 'compass-rails', git: 'git://github.com/milgner/compass-rails.git', branch: 'rails4'
+gem 'compass-rails', '~> 1.1.2'
 gem 'delayed_job_active_record'
 gem 'figaro'
 gem 'haml', '>= 3.1.7'
