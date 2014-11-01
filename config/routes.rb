@@ -1,3 +1,6 @@
+require 'sidekiq/web'
+require 'admin_constraint'
+
 LikeList::Application.routes.draw do
   root to: "home#index"
   resources :users, only: [ :index, :show, :edit, :update, :destroy ] do
@@ -9,4 +12,6 @@ LikeList::Application.routes.draw do
   get '/auth/failure' => 'sessions#failure'
 
   get   '/download_likes_script' => 'download#likes_script'
+
+  mount Sidekiq::Web => '/sidekiq', :constraints => AdminConstraint.new
 end

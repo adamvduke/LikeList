@@ -20,6 +20,7 @@ gem 'recursive-open-struct'
 gem 'rest-client'
 gem 'sass-rails',   '~> 4.0.0'
 gem 'sidekiq'
+gem 'sinatra', '~> 1.4.4', require: nil
 gem 'thin', '>= 1.5.0'
 gem 'turbolinks'
 gem 'uglifier', '>= 1.0.3'
