@@ -9,6 +9,8 @@ end
 desc "Remove broken likes"
 task remove_broken_likes: :environment do
   bulk_args = Like.pluck(:id, :standard_res_image)
-  Sidekiq::Client.push_bulk('queue' => 'low_priority', 'class' => LikeVerificationWorker, 'args' => bulk_args)
+  bulk_args.each_slice(10000).to_a.each do |slice|
+    Sidekiq::Client.push_bulk('queue' => 'low_priority', 'class' => LikeVerificationWorker, 'args' => slice)
+  end
 end
 
