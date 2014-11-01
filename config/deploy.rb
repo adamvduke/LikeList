@@ -5,7 +5,6 @@ set :whenever_environment, defer { rails_env }
 set :whenever_identifier, defer { "#{application}_#{rails_env}" }
 require 'whenever/capistrano'
 
-
 #adds our ssh keys to the forwarding agent
 `ssh-add`
 
@@ -16,7 +15,7 @@ set :user, 'deploy'
 
 set :repository, 'git@github.com:adamvduke/Like.it.git'
 set :branch, 'master'
-set :domain, '192.241.135.232'
+set :domain, 'www.likelist.me'
 
 set :scm, :git
 set :scm_verbose, true

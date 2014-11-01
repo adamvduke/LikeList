@@ -142,7 +142,7 @@ describe User do
       it "should increment the number of likes by 20" do
         user = FactoryGirl.build(:user)
         lambda {
-          user.update_likes_without_delay
+          user.update_likes
         }.should change(Like, :count).by(20)
       end
 

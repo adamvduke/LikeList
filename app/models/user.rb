@@ -26,7 +26,6 @@ class User < ActiveRecord::Base
       save
     end
   end
-  handle_asynchronously :update_likes
 
   def initial_liked_media_url
     unless token.blank?
@@ -55,6 +54,7 @@ class User < ActiveRecord::Base
     rescue RestClient::BadRequest => ex
       Rails.logger.error([$!, $@].join("\n")) unless Rails.env.test?
       update_attribute(:token, nil)
+      nil
     end
   end
 end
