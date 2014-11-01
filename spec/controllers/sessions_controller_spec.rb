@@ -70,6 +70,13 @@ describe SessionsController do
           @user.reload
           @user.last_sign_in.should_not be_nil
         end
+
+        it "should update the user's token" do
+          @user.update_attribute(:token, nil)
+          get :create, provider:"instagram"
+          @user.reload
+          @user.token.should_not be_nil
+        end
       end
     end
   end
