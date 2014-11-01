@@ -53,7 +53,7 @@ class User < ActiveRecord::Base
       response = RestClient.get url
       json = JSON.parse(response)
     rescue RestClient::BadRequest => ex
-      Rails.logger.error([$!, $@].join("\n"))
+      Rails.logger.error([$!, $@].join("\n")) unless Rails.env.test?
       update_attribute(:token, nil)
     end
   end
