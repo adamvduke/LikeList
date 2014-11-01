@@ -1,7 +1,7 @@
-.six.columns.centered
+.six.columns.centered.like-container
   .centered.instagram
     = link_to like.secure_standard_res_image, target:"_blank" do
-      = image_tag(like.secure_standard_res_image, class: "like_image")
+      = image_tag(like.secure_standard_res_image, class: "like_image", data: {'image-id' => like.id}, onerror: "handleBrokenInstagramImage(this);")
   .row
     .twelve.columns
       = like.caption if like.caption

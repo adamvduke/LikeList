@@ -8,15 +8,7 @@ end
 
 desc "Remove broken likes"
 task remove_broken_likes: :environment do
-  Like.find_each do |like|
-    begin
-      puts "Verifying like #{like.id}"
-      RestClient.head(like.standard_res_image)
-    rescue RestClient::Forbidden
-      puts "Like: #{like.id} caused a RestClient::Forbidden exception"
-      puts "URL: #{like.standard_res_image}"
-      like.destroy
-    end
-  end
+  bulk_args = Like.pluck(:id, :standard_res_image)
+  Sidekiq::Client.push_bulk('queue' => 'low_priority', 'class' => LikeVerificationWorker, 'args' => bulk_args)
 end
 

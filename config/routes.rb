@@ -6,6 +6,7 @@ LikeList::Application.routes.draw do
   resources :users, only: [ :index, :show, :edit, :update, :destroy ] do
     resources :likes, only: [ :update, :destroy ]
   end
+  post '/likes/broken' => 'likes#report_broken', as: :report_broken_like
   get '/auth/:provider/callback' => 'sessions#create'
   get '/signin' => 'sessions#new', as: :signin
   get '/signout' => 'sessions#destroy', as: :signout

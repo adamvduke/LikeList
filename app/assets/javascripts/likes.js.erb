@@ -1,2 +1,14 @@
 $.facebox.settings.closeImage =   '<%= asset_path("facebox_closelabel.png") %>'
 $.facebox.settings.loadingImage = '<%= asset_path("facebox_loading.gif") %>'
+
+<% environment.context_class.instance_eval { include Rails.application.routes.url_helpers } %>
+
+function handleBrokenInstagramImage(image) {
+  $(image).parents('.like-container').remove();
+  var imageId = $(image).data('image-id')
+  $.post( '<%= report_broken_like_path %>', {id: imageId}, function( data ) {
+    console.log(data);
+  });
+  image.onerror = "";
+  return true;
+}
