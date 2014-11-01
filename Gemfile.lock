@@ -181,6 +181,8 @@ GEM
       rack
       rake (>= 0.8.1)
     pg (0.14.1)
+    pghero (0.1.6)
+      activerecord
     polyglot (0.3.3)
     pry (0.9.12.2)
       coderay (~> 1.0.5)
@@ -334,6 +336,7 @@ DEPENDENCIES
   omniauth (>= 1.1.1)
   omniauth-instagram
   passenger
+  pghero
   pry-rails
   quiet_assets (>= 1.0.1)
   rails (= 4.0.0)
