@@ -71,7 +71,5 @@ module LikeList
     config.assets.version = '1.0'
 
     config.assets.initialize_on_precompile = false
-
-    config.middleware.insert_before(ActionDispatch::ParamsParser, 'LikeListDomainRedirect')
   end
 end
