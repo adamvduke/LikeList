@@ -15,5 +15,4 @@ LikeList::Application.routes.draw do
   get   '/download_likes_script' => 'download#likes_script'
 
   mount Sidekiq::Web => '/sidekiq',  constraints: AdminConstraint.new
-  mount PgHero::Engine => '/pghero', constraints: AdminConstraint.new
 end
