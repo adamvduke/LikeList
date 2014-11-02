@@ -6,6 +6,3 @@ every 60.minutes do
   rake 'fetch_from_instagram'
 end
 
-every :sunday, at: '1:30am' do
-  rake 'remove_broken_likes'
-end
