@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_filter :authenticate!, only:[:index, :edit, :update, :destroy]
   before_filter :admin_user, only:[:index, :destroy]
   before_filter :correct_user, only:[:edit, :update]
+  before_filter :ensure_ig_token, only:[:show]
 
   def index
     @users = User.order(:created_at)
@@ -48,6 +49,13 @@ class UsersController < ApplicationController
     def correct_user
       user = User.find_by_nickname!(params[:id])
       redirect_to(root_path) unless current_user?(user)
+    end
+
+    def ensure_ig_token
+      if signed_in? && current_user.token.nil?
+        sign_out
+        redirect_to root_url, notice: 'Please sign in to continue.'
+      end
     end
 
     def user_params

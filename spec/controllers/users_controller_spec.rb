@@ -61,6 +61,14 @@ describe UsersController do
       response.should be_success
     end
 
+    it "should sign the user out and redirect to the root path if the user's token is nil" do
+      test_sign_in(@user)
+      @user.update_attribute(:token, nil)
+      get :show, id:@user
+      controller.current_user.should be_nil
+      response.should redirect_to(root_path)
+    end
+
     it "should find the right user" do
       get :show, id:@user
       assigns(:user).should eq(@user)
