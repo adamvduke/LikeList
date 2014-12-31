@@ -11,10 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141102030242) do
+ActiveRecord::Schema.define(version: 20141231152528) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "pg_stat_statements"
 
   create_table "likes", force: true do |t|
     t.text     "caption"
@@ -72,5 +73,8 @@ ActiveRecord::Schema.define(version: 20141102030242) do
     t.boolean  "admin",        default: false, null: false
     t.datetime "last_sign_in"
   end
+
+  add_index "users", ["nickname"], name: "index_users_on_nickname", unique: true, using: :btree
+  add_index "users", ["provider", "uid"], name: "index_users_on_provider_and_uid", unique: true, using: :btree
 
 end

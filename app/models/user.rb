@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   after_create :update_likes
 
   validates :uid, presence: true
-  validates :nickname, presence: true
+  validates :nickname, presence: true, uniqueness: true
   validates :provider, presence: true
   validates :email, presence: true, on: :update
 

@@ -12,6 +12,8 @@ describe User do
       end
 
       it "should increment the number of users" do
+        # set nickname to something else to avoid a unique constraint violation
+        @auth['info']['nickname'] = 'test'
         lambda {
           User.create_with_omniauth(@auth)
         }.should change(User, :count).by(1)
