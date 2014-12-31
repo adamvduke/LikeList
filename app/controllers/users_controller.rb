@@ -21,7 +21,7 @@ class UsersController < ApplicationController
         redirect_to @user
       end
     else
-      render :edit
+      redirect_to edit_user_path(@user), alert: "Please enter your email address."
     end
   end
 

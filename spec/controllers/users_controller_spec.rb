@@ -167,7 +167,7 @@ describe UsersController do
 
       it "should render the 'edit' page" do
         put :update, id:@user, user:@attr
-        response.should render_template('edit')
+        response.should redirect_to(edit_user_path(@user))
       end
     end
 
