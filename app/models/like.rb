@@ -9,12 +9,21 @@ class Like < ActiveRecord::Base
     new(like_mapper.attr_hash)
   end
 
-  %w[standard_res_image low_res_image thumbnail].each do |method|
-    class_eval <<-RUBY, __FILE__, __LINE__ + 1
-      def secure_#{method}
-        return #{method} if #{method}.try(:start_with?, "https")
-        #{method}.nil? ? nil : #{method}.gsub("http", "https")
-      end
-    RUBY
+  def secure_standard_res_image
+    secure_url(standard_res_image)
   end
+
+  def secure_low_res_image
+    secure_url(low_res_image)
+  end
+
+  def secure_thumbnail
+    secure_url(thumbnail)
+  end
+
+  private
+    def secure_url(url)
+      return url if url.try(:start_with?, 'https')
+      url.try(:gsub, 'http', 'https')
+    end
 end
