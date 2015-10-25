@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
     user = User.where(provider: auth['provider'], uid: auth['uid'].to_s).first || User.create_with_omniauth(auth)
     sign_in(user)
     user.update_attribute(:token, auth['credentials']['token'])
-    user.update_likes if Rails.env.production?
+    user.update_likes if Rails.env.production? && user.likes.count == 0
     if user.email.blank?
       redirect_to edit_user_path(user), alert: "Please enter your email address."
     else
