@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 ruby '2.0.0'
 
 gem 'activerecord-postgresql-adapter'
-gem 'acts-as-taggable-on', '~> 3.4'
+gem 'acts-as-taggable-on', '~> 3.5'
 gem 'compass-rails', '~> 1.1.2'
 gem 'figaro'
 gem 'haml', '>= 3.1.7'
