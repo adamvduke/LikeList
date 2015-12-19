@@ -44,16 +44,16 @@ before 'deploy:assets:precompile', 'config:symlink'
 # If you are using Passenger mod_rails uncomment this:
 namespace :deploy do
   task :start do
-    run "sudo sv start likelist_#{rails_env}"
-    run "sudo sv start sidekiq_#{rails_env}"
+    run "sudo sv -w 60 start likelist_#{rails_env}"
+    run "sudo sv -w 60 start sidekiq_#{rails_env}"
   end
   task :stop do
-    run "sudo sv stop likelist_#{rails_env}"
-    run "sudo sv stop sidekiq_#{rails_env}"
+    run "sudo sv -w 60 stop likelist_#{rails_env}"
+    run "sudo sv -w 60 stop sidekiq_#{rails_env}"
   end
   task :restart, :roles => :app, :except => { :no_release => true } do
-    run "sudo sv restart likelist_#{rails_env}"
-    run "sudo sv restart sidekiq_#{rails_env}"
+    run "sudo sv -w 60 restart likelist_#{rails_env}"
+    run "sudo sv -w 60 restart sidekiq_#{rails_env}"
   end
 
   desc 'Show deployed revision'
