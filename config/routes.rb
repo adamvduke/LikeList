@@ -3,6 +3,10 @@ require 'admin_constraint'
 
 LikeList::Application.routes.draw do
   root to: "home#index"
+
+  health_check_proc = proc { [200, { 'Content-Type' => 'text/plain' }, ['OK']] }
+  match '/admin/ok', to: health_check_proc, via: [:get, :head, :options]
+
   resources :users, only: [ :index, :show, :edit, :update, :destroy ] do
     resources :likes, only: [ :update, :destroy ]
   end
