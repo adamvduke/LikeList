@@ -36,10 +36,12 @@ class User < ActiveRecord::Base
 
   def liked_posts
     media_url = initial_liked_media_url
+    depth = 0
     posts = []
-    while media_url != nil
+    while media_url != nil && depth < 10 
       json = json_for(media_url)
       media_url = json ? json['pagination']['next_url'] : nil
+      depth += 1
       posts.concat(json['data']) if json
     end
     posts
