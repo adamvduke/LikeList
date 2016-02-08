@@ -32,7 +32,7 @@ class UsersController < ApplicationController
     else
       @likes = paginate(@user.likes)
     end
-    @tags = Like.where(user_id: @user.id).tag_counts_on(:tags, at_least: 5)
+    @tags = Like.where(user_id: @user.id).tag_counts_on(:tags, at_least: 5).sort_by(&:taggings_count)
   end
 
   def destroy
