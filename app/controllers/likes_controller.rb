@@ -1,5 +1,5 @@
 class LikesController < ApplicationController
-  before_filter :authenticate!
+  before_filter :authenticate!, except: [:report_broken]
   before_filter :correct_user?, except: [:report_broken]
 
   def update
